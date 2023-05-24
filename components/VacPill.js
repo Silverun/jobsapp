@@ -1,4 +1,5 @@
 const VacPill = ({
+  id,
   profession,
   firmName,
   townTitle,
@@ -45,7 +46,10 @@ const VacPill = ({
           <p className="vacancy-card__location-city">{townTitle}</p>
         </div>
       </div>
-      <div className="vacancy-card__save">
+      <button
+        data-elem={`vacancy-${id}-shortlist-button`}
+        className="vacancy-card__save"
+      >
         <svg
           width="24"
           height="24"
@@ -59,7 +63,7 @@ const VacPill = ({
             strokeWidth="1.5"
           />
         </svg>
-      </div>
+      </button>
     </li>
   );
 };

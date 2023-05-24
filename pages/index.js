@@ -61,14 +61,18 @@ export default function Home() {
                 value={vacSearch}
                 type="text"
                 placeholder="Введите название вакансии"
+                data-elem="search-input"
               />
             </div>
-            <button onClick={searchVacHandler}>Поиск</button>
+            <button data-elem="search-button" onClick={searchVacHandler}>
+              Поиск
+            </button>
           </div>
           <ul className="vacancy-list">
             {vacs.map((vac) => (
               <VacPill
                 key={vac.id}
+                id={vac.id}
                 profession={vac.profession}
                 firmName={vac.firm_name}
                 townTitle={vac.town.title}
@@ -76,6 +80,7 @@ export default function Home() {
                 payFrom={vac.payment_from}
                 payTo={vac.payment_to}
                 currency={vac.currency}
+                data-elem={`vacancy-${vac.id}`}
               />
             ))}
           </ul>

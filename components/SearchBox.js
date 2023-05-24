@@ -41,6 +41,7 @@ const SearchBox = ({ industries, getData }) => {
               defaultValue="Выберите отраcль"
               name="industry"
               id="industry"
+              data-elem="industry-select"
             >
               <option value="Выберите отраcль" disabled hidden>
                 Выберите отраcль
@@ -59,15 +60,19 @@ const SearchBox = ({ industries, getData }) => {
               value={wageFrom}
               type="number"
               placeholder="От"
+              data-elem="salary-from-input"
             />
             <input
               onChange={(e) => setWageTo(e.target.value)}
               value={wageTo}
               type="number"
               placeholder="До"
+              data-elem="salary-to-input"
             />
           </div>
-          <button onClick={SideFilterHandler}>Применить</button>
+          <button data-elem="search-button" onClick={SideFilterHandler}>
+            Применить
+          </button>
         </div>
       </div>
     </div>
