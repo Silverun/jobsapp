@@ -1,4 +1,20 @@
-const SearchBox = () => {
+import { useState } from "react";
+import axios from "axios";
+
+const SearchBox = ({ industries, getData }) => {
+  const [wageFrom, setWageFrom] = useState("");
+  const [wageTo, setWageTo] = useState("");
+  const [selectedInd, setSelectedInd] = useState();
+
+  const SideFilterHandler = async () => {
+    console.log(selectedInd, wageFrom, wageTo);
+    const result = await axios.get(
+      `/api/vacancies/?catalogues=${selectedInd}&payment_from=${wageFrom}&payment_to=${wageTo}`
+    );
+    console.log(result.data);
+    getData(result.data);
+  };
+
   return (
     <div className="search-box">
       <div className="search-box-inner">
@@ -20,6 +36,8 @@ const SearchBox = () => {
           <div className="search-box__bottom-ind">
             <label htmlFor="industry">Отрасль</label>
             <select
+              onChange={(e) => setSelectedInd(e.target.value)}
+              value={selectedInd}
               defaultValue="Выберите отраcль"
               name="industry"
               id="industry"
@@ -27,18 +45,29 @@ const SearchBox = () => {
               <option value="Выберите отраcль" disabled hidden>
                 Выберите отраcль
               </option>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
+              {industries.map((ind) => (
+                <option key={ind.key} value={ind.key}>
+                  {ind.title_trimmed}
+                </option>
+              ))}
             </select>
           </div>
           <div className="search-box__bottom-wage">
             <label htmlFor="wage">Оклад</label>
-            <input type="number" placeholder="От" />
-            <input type="number" placeholder="До" />
+            <input
+              onChange={(e) => setWageFrom(e.target.value)}
+              value={wageFrom}
+              type="number"
+              placeholder="От"
+            />
+            <input
+              onChange={(e) => setWageTo(e.target.value)}
+              value={wageTo}
+              type="number"
+              placeholder="До"
+            />
           </div>
-          <button>Применить</button>
+          <button onClick={SideFilterHandler}>Применить</button>
         </div>
       </div>
     </div>

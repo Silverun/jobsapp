@@ -7,6 +7,7 @@ export default function Home() {
   const [vacs, setVacs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [vacSearch, setVacSearch] = useState("");
+  const [industries, setIndustries] = useState([]);
 
   const searchVacHandler = async () => {
     const result = await axios.get(`/api/vacancies/?keyword=${vacSearch}`);
@@ -14,11 +15,19 @@ export default function Home() {
     setVacSearch("");
   };
 
+  const getSidePanelData = (data) => {
+    setVacs(data);
+  };
+
   useEffect(() => {
     const getData = async () => {
       const vac = await axios.get("/api/vacancies");
       console.log(vac.data.objects);
       setVacs(vac.data.objects);
+
+      const ind = await axios.get("/api/catalogues");
+      console.log(ind.data);
+      setIndustries(ind.data);
       setIsLoading(false);
     };
     getData();
@@ -29,7 +38,7 @@ export default function Home() {
   } else {
     return (
       <div className="home-screen">
-        <SearchBox />
+        <SearchBox getData={getSidePanelData} industries={industries} />
         <div>
           <div className="home-screen__search">
             <div className="home-screen__search-input">
