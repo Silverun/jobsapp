@@ -6,6 +6,13 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [vacs, setVacs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [vacSearch, setVacSearch] = useState("");
+
+  const searchVacHandler = async () => {
+    const result = await axios.get(`/api/vacancies/?keyword=${vacSearch}`);
+    setVacs(result.data);
+    setVacSearch("");
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -40,9 +47,14 @@ export default function Home() {
                   strokeLinecap="round"
                 />
               </svg>
-              <input type="text" placeholder="Введите название вакансии" />
+              <input
+                onChange={(e) => setVacSearch(e.target.value)}
+                value={vacSearch}
+                type="text"
+                placeholder="Введите название вакансии"
+              />
             </div>
-            <button>Поиск</button>
+            <button onClick={searchVacHandler}>Поиск</button>
           </div>
           <ul className="vacancy-list">
             {vacs.map((vac) => (
