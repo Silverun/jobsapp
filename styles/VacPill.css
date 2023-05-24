@@ -1,0 +1,97 @@
+.vacancy-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 90px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.vacancy-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+  order: 0;
+  flex-grow: 0;
+}
+
+.vacancy-card__save {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 10px;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.vacancy-card__heading {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #5e96fc;
+}
+
+.vacancy-card__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.vacancy-card__info-pay {
+  display: flex;
+  flex-wrap: nowrap;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #232134;
+}
+
+.vacancy-card__info-dot {
+  font-size: 20px;
+  color: #7b7c88;
+}
+
+.vacancy-card__info-time {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #232134;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.vacancy-card__location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.vacancy-card__location-city {
+}
