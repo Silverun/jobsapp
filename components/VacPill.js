@@ -8,15 +8,22 @@ const VacPill = ({
   payTo,
   currency,
   isFavorite,
+  onClick,
 }) => {
+  const payment = () => {
+    if (payFrom == "0" && payTo == "0") return `Без указания з/п`;
+    if (payFrom == "0") return `до ${payTo} ${currency}`;
+    if (payTo == "0") return `от ${payFrom} ${currency}`;
+    if (payFrom == payTo) return `${payFrom} ${currency}`;
+    return `от ${payFrom} - ${payTo} ${currency}`;
+  };
+
   return (
-    <li className="vacancy-card">
+    <li className="vacancy-card" role="button" onClick={onClick}>
       <div className="vacancy-card__content">
         <div className="vacancy-card__heading">{profession}</div>
         <div className="vacancy-card__info">
-          <p className="vacancy-card__info-pay">
-            от {payFrom} {payTo == "0" ? "" : `- ${payTo}`} {currency}
-          </p>
+          <p className="vacancy-card__info-pay">{payment()}</p>
           <p className="vacancy-card__info-dot">&bull;</p>
           <p className="vacancy-card__info-time">{typeOfWorkTitle}</p>
         </div>

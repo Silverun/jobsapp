@@ -15,12 +15,21 @@ const SearchBox = ({ industries, getData }) => {
     getData(result.data);
   };
 
+  const resetFiltersHandler = () => {
+    setWageFrom("");
+    setWageTo("");
+    setSelectedInd("Выберите отраcль");
+  };
+
   return (
     <div className="search-box">
       <div className="search-box-inner">
         <div className="search-box__top">
           <p className="search-box__top-name">Фильтры</p>
-          <button className="search-box__top-button">
+          <button
+            onClick={resetFiltersHandler}
+            className="search-box__top-button"
+          >
             Сбросить все
             <svg
               xmlns="http://www.w3.org/2000/svg"

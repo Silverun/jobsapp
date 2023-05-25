@@ -1,7 +1,10 @@
 import { useRouter } from "next/router";
+import parse from "html-react-parser";
 
 export default function SoloVacancy() {
   const router = useRouter();
-  const { vacancyId } = router.query;
-  return <div>SoloVacancy {vacancyId}</div>;
+  const vac = JSON.parse(router.query.vac);
+  const description = parse(vac.vacancyRichText);
+
+  return <div className="vac-description">{description}</div>;
 }
