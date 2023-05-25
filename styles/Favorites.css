@@ -1,0 +1,33 @@
+.favorites-box {
+  width: 100%;
+  margin: 120px auto;
+}
+
+.favorites-box__nothing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 32px;
+}
+
+.favorites-box__nothing p {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.favorites-box__nothing button {
+  padding: 10px 24px;
+  width: 164px;
+  height: 42px;
+  background: #deecff;
+  border-radius: 8px;
+  color: #3b7cd3;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.favorites-box__img {
+  height: auto;
+  width: auto;
+}

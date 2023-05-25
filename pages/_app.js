@@ -3,6 +3,7 @@ import "/styles/VacPill.css";
 import "/styles/SearchBox.css";
 import "/styles/Layout.css";
 import "/styles/SoloVacancy.css";
+import "/styles/Favorites.css";
 import Layout from "@/components/Layout";
 import { Inter } from "next/font/google";
 
