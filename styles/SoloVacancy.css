@@ -1,4 +1,63 @@
-.vac-description {
-  width: 70%;
+.solo-vacancy {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.solo-vacancy__description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 20px;
+  background: #ffffff;
+  border: 1px solid #eaebed;
+  border-radius: 12px;
+  width: 50%;
   margin: auto;
+}
+
+.solo-vacancy__description p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #232134;
+}
+
+.solo-vacancy__description ul {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.solo-vacancy__pill {
+  pointer-events: none;
+  width: 50%;
+  margin: auto;
+}
+
+.solo-vacancy__pill .vacancy-card__heading {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 34px;
+  color: #232134;
+}
+
+.solo-vacancy__pill .vacancy-card__info-pay {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.solo-vacancy__pill .vacancy-card__info-time {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
 }
