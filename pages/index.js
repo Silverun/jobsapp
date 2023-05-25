@@ -22,10 +22,7 @@ export default function Home() {
   };
 
   const vacClickHandler = (vac) => {
-    router.push({
-      pathname: `vacancy/${vac.id}`,
-      query: { vac: JSON.stringify(vac) },
-    });
+    router.push(`vacancy/${vac.id}`);
   };
 
   useEffect(() => {
