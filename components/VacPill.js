@@ -1,7 +1,6 @@
 const VacPill = ({
   id,
   profession,
-  firmName,
   townTitle,
   typeOfWorkTitle,
   payFrom,
@@ -10,6 +9,10 @@ const VacPill = ({
   isFavorite,
   onClick,
 }) => {
+  const addToFavoritesHandler = () => {
+    localStorage.setItem("");
+  };
+
   const payment = () => {
     if (payFrom == "0" && payTo == "0") return `Без указания з/п`;
     if (payFrom == "0") return `до ${payTo} ${currency}`;
@@ -56,6 +59,7 @@ const VacPill = ({
       <button
         data-elem={`vacancy-${id}-shortlist-button`}
         className="vacancy-card__save"
+        onClick={addToFavoritesHandler}
       >
         <svg
           width="24"

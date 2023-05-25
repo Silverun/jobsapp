@@ -57,7 +57,6 @@ export default function Home() {
                 key={vac.id}
                 id={vac.id}
                 profession={vac.profession}
-                firmName={vac.firm_name}
                 townTitle={vac.town.title}
                 typeOfWorkTitle={vac.type_of_work.title}
                 payFrom={vac.payment_from}
