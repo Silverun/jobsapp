@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import { useState } from "react";
+
 const VacPill = ({
   id,
   profession,
@@ -6,11 +9,44 @@ const VacPill = ({
   payFrom,
   payTo,
   currency,
-  isFavorite,
   onClick,
 }) => {
-  const addToFavoritesHandler = () => {
-    localStorage.setItem("");
+  const router = useRouter();
+  const pathname = router.pathname;
+
+  const checkIfFavorite = () => {
+    if (
+      "favoriteIds" in localStorage &&
+      localStorage.getItem("favoriteIds") !== "[]"
+    ) {
+      const oldIdsStr = localStorage.getItem("favoriteIds");
+      const oldIds = oldIdsStr.slice(1, oldIdsStr.length - 1).split(",");
+      return oldIds.some((el) => el == id);
+    } else {
+      return false;
+    }
+  };
+
+  const [isFavorite, setIsFavorite] = useState(() => checkIfFavorite());
+
+  const toggleFavoriteHandler = () => {
+    let newIds = [];
+    const oldIds = JSON.parse(localStorage.getItem("favoriteIds"));
+
+    if (isFavorite) {
+      setIsFavorite(false);
+      newIds = oldIds.filter((oldId) => oldId !== id);
+      localStorage.setItem("favoriteIds", JSON.stringify(newIds));
+    } else {
+      if (oldIds) {
+        newIds = [...oldIds, id];
+      } else {
+        newIds.push(id);
+      }
+      localStorage.setItem("favoriteIds", JSON.stringify(newIds));
+      setIsFavorite(true);
+    }
+    if (pathname === "/favorites") window.location.reload(false);
   };
 
   const payment = () => {
@@ -22,8 +58,8 @@ const VacPill = ({
   };
 
   return (
-    <li className="vacancy-card" role="button" onClick={onClick}>
-      <div className="vacancy-card__content">
+    <li className="vacancy-card">
+      <div role="button" onClick={onClick} className="vacancy-card__content">
         <div className="vacancy-card__heading">{profession}</div>
         <div className="vacancy-card__info">
           <p className="vacancy-card__info-pay">{payment()}</p>
@@ -59,13 +95,13 @@ const VacPill = ({
       <button
         data-elem={`vacancy-${id}-shortlist-button`}
         className="vacancy-card__save"
-        onClick={addToFavoritesHandler}
+        onClick={toggleFavoriteHandler}
       >
         <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          fill="none"
+          fill={isFavorite ? "#5E96FC" : "none"}
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

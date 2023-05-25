@@ -16,7 +16,6 @@ export default function SoloVacancy() {
     if (!vacancyId) return;
     const getVacancy = async () => {
       const vac = await axios.get(`/api/vacancy/${vacancyId}`);
-      console.log(vac.data);
       setVac(vac.data);
       setDescription(parse(vac.data.vacancyRichText));
       setIsLoading(false);

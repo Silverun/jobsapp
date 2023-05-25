@@ -28,7 +28,6 @@ export default function Home() {
   useEffect(() => {
     const getData = async () => {
       const vac = await axios.get("/api/vacancies");
-      console.log(vac.data.objects);
       setVacs(vac.data.objects);
 
       const ind = await axios.get("/api/catalogues");
