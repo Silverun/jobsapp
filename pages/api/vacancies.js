@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     const to = req.query.payment_to;
     const data = await axios.get(
       process.env.PROXY_URL +
-        `/2.0/vacancies/?catalogues=${catalogues}&payment_from=${from}&payment_to=${to}&published=1`,
+        `/2.0/vacancies/?catalogues=${catalogues}&payment_from=${from}&payment_to=${to}&published=1&no_agreement=1`,
       {
         headers: {
           // Authorization: "Bearer " + accToken,
