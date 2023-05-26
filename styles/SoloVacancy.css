@@ -37,7 +37,6 @@
 }
 
 .solo-vacancy__pill {
-  pointer-events: none;
   width: 50%;
   margin: auto;
 }
@@ -60,4 +59,8 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 20px;
+}
+
+.solo-vacancy__pill .vacancy-card__content {
+  pointer-events: none;
 }

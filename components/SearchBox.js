@@ -11,7 +11,7 @@ const SearchBox = ({ industries, getData }) => {
     const result = await axios.get(
       `/api/vacancies/?catalogues=${selectedInd}&payment_from=${+wageFrom}&payment_to=${+wageTo}`
     );
-    console.log(result.data);
+    console.log("Sidefilter data", result.data);
     getData(result.data);
   };
 

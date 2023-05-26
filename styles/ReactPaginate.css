@@ -1,0 +1,32 @@
+.paginated-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pagination-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 8px;
+}
+
+.pagination-box li {
+  padding: 2px 8px;
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border: 1px solid #d5d6dc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.pagination-box .selected {
+  background: #5e96fc;
+  color: #ffffff;
+}
+
+.pagination-box .disabled {
+  color: #d5d6dc;
+  pointer-events: none;
+}
