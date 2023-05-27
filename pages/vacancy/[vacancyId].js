@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import PulseLoader from "react-spinners/PulseLoader";
 import VacPill from "@/components/VacPill";
+import axiosPrivate from "/config/axios";
 
 export default function SoloVacancy() {
   const router = useRouter();
@@ -15,7 +15,7 @@ export default function SoloVacancy() {
   useEffect(() => {
     if (!vacancyId) return;
     const getVacancy = async () => {
-      const vac = await axios.get(`/api/vacancy/${vacancyId}`);
+      const vac = await axiosPrivate.get(`/api/vacancy/${vacancyId}`);
       setVac(vac.data);
       setDescription(parse(vac.data.vacancyRichText));
       setIsLoading(false);

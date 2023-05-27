@@ -1,15 +1,16 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-  console.log(req.query);
+  const accToken = req.headers.authorization;
+
   if (JSON.stringify(req.query) !== "{}" && req.query.keyword) {
-    console.log("search trigger");
+    // console.log("search trigger");
     const keyword = req.query.keyword;
     const data = await axios.get(
       process.env.PROXY_URL + `/2.0/vacancies/?keyword=${keyword}&published=1`,
       {
         headers: {
-          // Authorization: "Bearer " + accToken,
+          Authorization: accToken,
           "X-Api-App-Id": process.env.SUPERJOB_CLIENT_SECRET,
           "x-secret-key": process.env.PROXY_KEY,
         },
@@ -17,7 +18,7 @@ export default async function handler(req, res) {
     );
     res.status(200).send(data.data.objects);
   } else if (req.query.catalogues) {
-    console.log("trigger side");
+    // console.log("trigger side");
     const catalogues = req.query.catalogues;
     const from = req.query.payment_from;
     const to = req.query.payment_to;
@@ -26,7 +27,7 @@ export default async function handler(req, res) {
         `/2.0/vacancies/?catalogues=${catalogues}&payment_from=${from}&payment_to=${to}&published=1&no_agreement=1`,
       {
         headers: {
-          // Authorization: "Bearer " + accToken,
+          Authorization: accToken,
           "X-Api-App-Id": process.env.SUPERJOB_CLIENT_SECRET,
           "x-secret-key": process.env.PROXY_KEY,
         },
@@ -35,12 +36,12 @@ export default async function handler(req, res) {
     res.status(200).send(data.data.objects);
   } else {
     try {
-      console.log("basic trigger");
+      // console.log("basic trigger");
       const data = await axios.get(
         process.env.PROXY_URL + "/2.0/vacancies/?published=1",
         {
           headers: {
-            // Authorization: "Bearer " + accToken,
+            Authorization: accToken,
             "X-Api-App-Id": process.env.SUPERJOB_CLIENT_SECRET,
             "x-secret-key": process.env.PROXY_KEY,
           },

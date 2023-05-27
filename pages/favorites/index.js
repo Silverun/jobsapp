@@ -1,9 +1,9 @@
 import PaginatedVacs from "@/components/PaginatedVacs";
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { PulseLoader } from "react-spinners";
+import axiosPrivate from "/config/axios";
 
 export default function Favorites() {
   const router = useRouter();
@@ -13,7 +13,7 @@ export default function Favorites() {
   useEffect(() => {
     const ids = localStorage.getItem("favoriteIds");
     const getFavorites = async () => {
-      const vac = await axios.get(`/api/favorites/${ids}`);
+      const vac = await axiosPrivate.get(`/api/favorites/${ids}`);
       setVacs(vac.data.objects);
       setIsLoading(false);
     };

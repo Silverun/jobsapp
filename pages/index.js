@@ -1,9 +1,9 @@
 import SearchBox from "@/components/SearchBox";
 import SearchField from "@/components/SearchField";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 import PaginatedVacs from "@/components/PaginatedVacs";
+import axiosPrivate from "/config/axios";
 
 export default function Home() {
   const [vacs, setVacs] = useState([]);
@@ -12,9 +12,10 @@ export default function Home() {
 
   const searchVacHandler = async (vacSearch) => {
     setIsLoading(true);
-    const result = await axios.get(`/api/vacancies/?keyword=${vacSearch}`);
+    const result = await axiosPrivate.get(
+      `/api/vacancies/?keyword=${vacSearch}`
+    );
     setVacs(result.data);
-    console.log(result.data);
     setIsLoading(false);
   };
 
@@ -24,15 +25,16 @@ export default function Home() {
 
   useEffect(() => {
     const getData = async () => {
-      const vac = await axios.get("/api/vacancies");
+      const vac = await axiosPrivate.get("/api/vacancies");
       console.log("Init load data", vac.data.objects);
       setVacs(vac.data.objects);
 
-      const ind = await axios.get("/api/catalogues");
+      const ind = await axiosPrivate.get("/api/catalogues");
       setIndustries(ind.data);
       setIsLoading(false);
     };
     getData();
+    console.log("getdata ran");
   }, []);
 
   if (isLoading) {

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
+  const accToken = req.headers.authorization;
   const { ids } = req.query;
   const idsArr = ids.slice(1, ids.length - 1).split(",");
 
@@ -16,7 +17,7 @@ export default async function handler(req, res) {
       process.env.PROXY_URL + `/2.0/vacancies/?${createQuery()}`,
       {
         headers: {
-          // Authorization: "Bearer " + accToken,
+          Authorization: accToken,
           "X-Api-App-Id": process.env.SUPERJOB_CLIENT_SECRET,
           "x-secret-key": process.env.PROXY_KEY,
         },

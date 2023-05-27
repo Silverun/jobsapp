@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import axiosPrivate from "/config/axios";
 
 const SearchBox = ({ industries, getData }) => {
   const [wageFrom, setWageFrom] = useState("");
@@ -8,7 +9,7 @@ const SearchBox = ({ industries, getData }) => {
 
   const SideFilterHandler = async () => {
     console.log(selectedInd, wageFrom, wageTo);
-    const result = await axios.get(
+    const result = await axiosPrivate.get(
       `/api/vacancies/?catalogues=${selectedInd}&payment_from=${+wageFrom}&payment_to=${+wageTo}`
     );
     console.log("Sidefilter data", result.data);
