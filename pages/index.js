@@ -10,6 +10,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [industries, setIndustries] = useState([]);
   const axiosPrivate = useAxiosPrivate();
+  const [keyword, setKeyword] = useState("");
 
   const searchVacHandler = async (vacSearch) => {
     setIsLoading(true);
@@ -18,6 +19,8 @@ export default function Home() {
     );
     setVacs(result.data);
     setIsLoading(false);
+    setKeyword(vacSearch);
+    console.log("Keyword search results", result.data);
   };
 
   const getSidePanelData = (data) => {
@@ -46,9 +49,18 @@ export default function Home() {
   } else {
     return (
       <div className="home-screen">
-        <SearchBox getData={getSidePanelData} industries={industries} />
-        <div>
+        <SearchBox
+          keyword={keyword}
+          getData={getSidePanelData}
+          industries={industries}
+        />
+        <div className="home-screen__box">
           <SearchField searchVacHandler={searchVacHandler} />
+          {keyword && (
+            <p className="home-screen__keyword">
+              Результаты по запросу: {keyword}
+            </p>
+          )}
           <PaginatedVacs itemsPerPage={4} initVacs={vacs} />
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { PulseLoader } from "react-spinners";
 import useAxiosPrivate from "@/hooks/useAxiosPrivate";
+import NoResults from "@/components/NoResults";
 
 export default function Favorites() {
   const axiosPrivate = useAxiosPrivate();
@@ -30,8 +31,12 @@ export default function Favorites() {
   } else if (vacs.length === 0) {
     return (
       <div className="favorites-box">
-        <div className="favorites-box__nothing">
-          <Image
+        <NoResults
+          text="Упс, здесь еще ничего нет!"
+          hasButton={true}
+          isSmall={false}
+        />
+        {/* <Image
             alt="nothing_found"
             width={240}
             height={240}
@@ -39,9 +44,8 @@ export default function Favorites() {
             className="favorites-box__img"
             priority={true}
           ></Image>
-          <p>Упс, здесь еще ничего нет!</p>
-          <button onClick={() => router.push("/")}>Поиск вакансий</button>
-        </div>
+          <p>Упс, здесь еще ничего нет!</p> */}
+        {/* <button onClick={() => router.push("/")}>Поиск вакансий</button> */}
       </div>
     );
   } else {

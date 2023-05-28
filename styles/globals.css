@@ -27,11 +27,20 @@ body {
   padding: 40px 162px;
 }
 
+.home-screen__box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-screen__keyword {
+  padding-left: 12px;
+}
+
 .home-screen__search {
   box-sizing: border-box;
   width: 100%;
   height: 48px;
-  margin-bottom: 16px;
   display: flex;
   align-items: center;
   padding: 8px 12px;

@@ -28,7 +28,6 @@ const SearchField = ({ searchVacHandler }) => {
           data-elem="search-input"
         />
       </div>
-
       <button
         data-elem="search-button"
         onClick={() => {

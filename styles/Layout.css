@@ -46,6 +46,9 @@
 .navbar__links a:hover {
   color: #5e96fc;
 }
+.navbar__links a:active {
+  color: #5e96fc;
+}
 
 @media (max-width: 1060px) {
   .navbar {
