@@ -3,9 +3,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { PulseLoader } from "react-spinners";
-import axiosPrivate from "/config/axios";
+import useAxiosPrivate from "@/hooks/useAxiosPrivate";
 
 export default function Favorites() {
+  const axiosPrivate = useAxiosPrivate();
   const router = useRouter();
   const [vacs, setVacs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +19,7 @@ export default function Favorites() {
       setIsLoading(false);
     };
     getFavorites();
-  }, []);
+  }, [axiosPrivate]);
 
   if (isLoading) {
     return (

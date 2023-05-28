@@ -3,12 +3,13 @@ import SearchField from "@/components/SearchField";
 import { useEffect, useState } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 import PaginatedVacs from "@/components/PaginatedVacs";
-import axiosPrivate from "/config/axios";
+import useAxiosPrivate from "@/hooks/useAxiosPrivate";
 
 export default function Home() {
   const [vacs, setVacs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [industries, setIndustries] = useState([]);
+  const axiosPrivate = useAxiosPrivate();
 
   const searchVacHandler = async (vacSearch) => {
     setIsLoading(true);
@@ -34,8 +35,7 @@ export default function Home() {
       setIsLoading(false);
     };
     getData();
-    console.log("getdata ran");
-  }, []);
+  }, [axiosPrivate]);
 
   if (isLoading) {
     return (

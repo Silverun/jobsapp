@@ -1,16 +1,15 @@
-const { default: axios } = require("axios");
+import axios from "axios";
 
 let accToken;
-let ttl;
 
 if (typeof window !== "undefined") {
   accToken = localStorage.getItem("acc_token");
-  ttl = localStorage.getItem("ttl");
 }
 
-export default axios.create({
+const axiosPrivate = axios.create({
   headers: {
     Authorization: "Bearer " + accToken,
-    "x-ttl": ttl,
   },
 });
+
+export default axiosPrivate;

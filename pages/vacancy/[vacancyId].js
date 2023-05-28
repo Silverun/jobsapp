@@ -3,9 +3,10 @@ import parse from "html-react-parser";
 import { useEffect, useState } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 import VacPill from "@/components/VacPill";
-import axiosPrivate from "/config/axios";
+import useAxiosPrivate from "@/hooks/useAxiosPrivate";
 
 export default function SoloVacancy() {
+  const axiosPrivate = useAxiosPrivate();
   const router = useRouter();
   const { vacancyId } = router.query;
   const [vac, setVac] = useState({});
