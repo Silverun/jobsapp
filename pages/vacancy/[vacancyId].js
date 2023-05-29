@@ -22,7 +22,7 @@ export default function SoloVacancy() {
       setIsLoading(false);
     };
     getVacancy();
-  }, [vacancyId]);
+  }, [vacancyId, axiosPrivate]);
 
   if (isLoading) {
     return (

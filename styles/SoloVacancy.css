@@ -21,9 +21,8 @@
 
 .solo-vacancy__description p {
   font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
+  line-height: 140%;
+  font-size: 16px;
   color: #232134;
 }
 

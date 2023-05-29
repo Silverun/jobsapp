@@ -75,6 +75,12 @@ body {
   text-align: center;
   color: #ffffff;
 }
+.home-screen__search button:hover {
+  background: #92c1ff;
+}
+.home-screen__search button:active {
+  background: #3b7cd3;
+}
 
 .vacancy-list {
   display: flex;

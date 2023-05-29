@@ -41,7 +41,6 @@
 }
 
 .search-box__top-name {
-  /* Title S/Bold */
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -60,6 +59,14 @@
   display: flex;
   align-items: center;
   color: #acadb9;
+}
+
+.search-box__top-button:hover {
+  color: #92c1ff;
+}
+
+.search-box__top-button:active {
+  color: #3b7cd3;
 }
 
 .search-box__bottom {
@@ -117,6 +124,13 @@
   align-self: stretch;
   flex-grow: 0;
   color: #acadb9;
+}
+
+.search-box__bottom-ind option {
+  color: #232134;
+}
+.search-box__bottom-ind option:hover {
+  color: #5e96fc;
 }
 
 .search-box__default-ind {
@@ -190,4 +204,11 @@
   line-height: 21px;
   text-align: center;
   color: #ffffff;
+}
+
+.search-box__bottom button:hover {
+  background: #92c1ff;
+}
+.search-box__bottom button:active {
+  background: #3b7cd3;
 }

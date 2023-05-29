@@ -15,12 +15,11 @@ export default function Home() {
   const searchVacHandler = async (vacSearch) => {
     setIsLoading(true);
     const result = await axiosPrivate.get(
-      `/api/vacancies/?keyword=${vacSearch}`
+      `/api/vacancies/?keyword=${vacSearch}&search=1`
     );
     setVacs(result.data);
     setIsLoading(false);
     setKeyword(vacSearch);
-    console.log("Keyword search results", result.data);
   };
 
   const getSidePanelData = (data) => {
@@ -29,10 +28,8 @@ export default function Home() {
 
   useEffect(() => {
     const getData = async () => {
-      const vac = await axiosPrivate.get("/api/vacancies");
-      console.log("Init load data", vac.data.objects);
+      const vac = await axiosPrivate.get("/api/vacancies/?basic=1");
       setVacs(vac.data.objects);
-
       const ind = await axiosPrivate.get("/api/catalogues");
       setIndustries(ind.data);
       setIsLoading(false);

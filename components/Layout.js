@@ -3,6 +3,11 @@ import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
   const router = useRouter();
+  const homeClickHandler = () => {
+    if (router.pathname === "/") {
+      router.reload();
+    }
+  };
   return (
     <>
       <nav className="navbar">
@@ -24,7 +29,7 @@ const Layout = ({ children }) => {
           <p>Jobored</p>
         </div>
         <div className="navbar__links">
-          <Link className="navbar__links" href="/">
+          <Link onClick={homeClickHandler} className="navbar__links" href="/">
             Поиск вакансий
           </Link>
           <Link href="/favorites">Избранное</Link>

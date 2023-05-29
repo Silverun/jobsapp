@@ -7,11 +7,9 @@ const SearchBox = ({ industries, getData, keyword }) => {
   const [selectedInd, setSelectedInd] = useState();
 
   const SideFilterHandler = async () => {
-    console.log("Filter", selectedInd, wageFrom, wageTo, keyword);
     const result = await axiosPrivate.get(
-      `/api/vacancies/?catalogues=${selectedInd}&payment_from=${+wageFrom}&payment_to=${+wageTo}`
+      `/api/vacancies/?catalogues=${selectedInd}&payment_from=${+wageFrom}&payment_to=${+wageTo}&filter=1&keyword=${keyword}`
     );
-    console.log("Sidefilter data", result.data);
     getData(result.data);
   };
 

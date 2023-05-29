@@ -1,6 +1,4 @@
 import PaginatedVacs from "@/components/PaginatedVacs";
-import Image from "next/image";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { PulseLoader } from "react-spinners";
 import useAxiosPrivate from "@/hooks/useAxiosPrivate";
@@ -8,7 +6,6 @@ import NoResults from "@/components/NoResults";
 
 export default function Favorites() {
   const axiosPrivate = useAxiosPrivate();
-  const router = useRouter();
   const [vacs, setVacs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,16 +33,6 @@ export default function Favorites() {
           hasButton={true}
           isSmall={false}
         />
-        {/* <Image
-            alt="nothing_found"
-            width={240}
-            height={240}
-            src="/no_results.png"
-            className="favorites-box__img"
-            priority={true}
-          ></Image>
-          <p>Упс, здесь еще ничего нет!</p> */}
-        {/* <button onClick={() => router.push("/")}>Поиск вакансий</button> */}
       </div>
     );
   } else {
